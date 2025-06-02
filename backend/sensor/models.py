@@ -5,3 +5,6 @@ class SensorData(models.Model):
     y = models.FloatField()
     z = models.FloatField()
     timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"x={self.x}, y={self.y}, z={self.z} at {self.timestamp}"

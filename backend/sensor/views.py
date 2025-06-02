@@ -6,7 +6,7 @@ from rest_framework.decorators import api_view
 
 class SensorDataView(APIView):
     def post(self, request):
-        serializer = SensorDataSerializer(data=request.data, many=True)
+        serializer = SensorDataSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response({"message": "Data received"}, status=status.HTTP_201_CREATED)

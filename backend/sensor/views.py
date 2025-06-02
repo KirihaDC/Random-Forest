@@ -10,3 +10,12 @@ class SensorDataView(APIView):
             serializer.save()
             return Response({"message": "Data received"}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    
+@api_view(['POST'])
+def sensor_data_upload(request):
+    serializer = SensorDataSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({'status': 'success'})
+    return Response(serializer.errors, status=400)
